@@ -1,0 +1,19 @@
+<configuration>
+    <properties resourses="db.properties" />
+    <enviroments default="stage">
+        <enviroment id="development">
+            <transactionManager type="JDBC">
+                <property name="default read only" value="false" />
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </enviroment>
+    </enviroments>
+    <mappers>
+        <!--mappers xml file -->
+    </mappers>
+</configuration>
