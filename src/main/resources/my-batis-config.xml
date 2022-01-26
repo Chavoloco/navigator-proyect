@@ -1,19 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
-    <properties resourses="db.properties" />
-    <enviroments default="stage">
+    <!--<properties resource="db.properties" ></properties>-->
+    <properties>
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3308/navigator_db"/>
+        <property name="username" value="root"/>
+        <property name="password" value="admin"/>
+    </properties>
+    <enviroments default="development">
         <enviroment id="development">
             <transactionManager type="JDBC">
-                <property name="default read only" value="false" />
+                <property name="default Read Only" value="false"/>
             </transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="${db.driver}"/>
-                <property name="url" value="${db.url}"/>
-                <property name="username" value="${db.username}"/>
-                <property name="password" value="${db.password}"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </enviroment>
     </enviroments>
     <mappers>
         <!--mappers xml file -->
+        <mapper resource="mappers/node-mapper.xml"/>
+        <mapper resource="mappers/vertex-mapper.xml"/>
+        node-mapper.xml
+        vertex-mapper.xml
     </mappers>
 </configuration>

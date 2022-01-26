@@ -1,4 +1,4 @@
-package com.solvd.navigatorProyect.binary;
+package com.solvd.navigatorProject.binary;
 
 public class Vertex {
     private long id;

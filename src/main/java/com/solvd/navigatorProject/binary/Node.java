@@ -1,4 +1,4 @@
-package com.solvd.navigatorProyect.binary;
+package com.solvd.navigatorProject.binary;
 
 public class Node {
     private long id;
@@ -9,8 +9,7 @@ public class Node {
     public Node() {
     }
 
-    public Node(long id, String name, long positionX, long positionY) {
-        this.id = id;
+    public Node( long positionX, long positionY, String name) {
         this.name = name;
         this.positionX = positionX;
         this.positionY = positionY;
