@@ -4,9 +4,7 @@ import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 
 public interface IVertexDao extends IEntityDao<Vertex>{
-    void saveNodeA(Node nodeA);
+    double getWeightById();
 
-    void saveNodeB(Node nodeB);
-
-    double getWeight();
+    //void saveNode(Node node);
 }

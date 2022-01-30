@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.navigatorProject.dao.interfaces.IVertexDao">
+    <insert id="save" parameterType="com.solvd.navigatorProject.binary.Vertex">
+        INSERT INTO vertices (weight)
+        VALUES ( #{weight} );
+    </insert>
+    <select id="getAll" resultMap="VertexResultMap">
+        SELECT id, weight FROM vertices
+    </select>
+    <select id="getById" resultMap="VertexResultMap">
+        SELECT id, weight FROM vertices WHERE id = #{id}
+    </select>
+    <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="weight" property="weight"/>
+        <collection property="nodes" javaType="ArrayList" />
+    </resultMap>
+</mapper>

@@ -4,6 +4,12 @@
 # Log file
 *.log
 
+target/classes
+target/generated-sources
+
+target
+
+build
 # BlueJ files
 *.ctxt
 

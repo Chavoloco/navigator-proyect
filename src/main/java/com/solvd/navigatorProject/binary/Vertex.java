@@ -1,16 +1,24 @@
 package com.solvd.navigatorProject.binary;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Vertex {
     private long id;
     private double weight;
-    private Node nodeA;
-    private Node nodeB;
+    private List<Node> nodes;
 
-    public Vertex(long id, double weight, Node nodeA, Node nodeB) {
-        this.id = id;
+    public Vertex() {
+    }
+
+    public Vertex(double weight) {
         this.weight = weight;
-        this.nodeA = nodeA;
-        this.nodeB = nodeB;
+        this.nodes = new ArrayList<Node>();
+    }
+
+    public Vertex(double weight, List<Node> nodes) {
+        this.weight = weight;
+        this.nodes = nodes;
     }
 
     public long getId() {
@@ -29,20 +37,12 @@ public class Vertex {
         this.weight = weight;
     }
 
-    public Node getNodeA() {
-        return nodeA;
+    public List<Node> getNodes() {
+        return nodes;
     }
 
-    public void setNodeA(Node nodeA) {
-        this.nodeA = nodeA;
-    }
-
-    public Node getNodeB() {
-        return nodeB;
-    }
-
-    public void setNodeB(Node nodeB) {
-        this.nodeB = nodeB;
+    public void addNode(Node nodes) {
+        this.nodes.add(nodes);
     }
 
     @Override
@@ -50,8 +50,7 @@ public class Vertex {
         return "Vertex{" +
                 "id=" + id +
                 ", weight=" + weight +
-                ", nodeA=" + nodeA +
-                ", nodeB=" + nodeB +
+                ", nodes=" + nodes +
                 '}';
     }
 }
