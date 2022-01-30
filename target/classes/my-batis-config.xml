@@ -1,9 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
-    <properties resourses="db.properties" />
+    <properties resource="db.properties" ></properties>
     <enviroments default="stage">
         <enviroment id="development">
             <transactionManager type="JDBC">
-                <property name="default read only" value="false" />
+                <property name="default Read Only" value="false"/>
             </transactionManager>
             <dataSource type="POOLED">
                 <property name="driver" value="${db.driver}"/>
@@ -15,5 +20,9 @@
     </enviroments>
     <mappers>
         <!--mappers xml file -->
+        <mapper resource="mappers/node-mapper.xml"/>
+        <mapper resource="mappers/vertex-mapper.xml"/>
+        node-mapper.xml
+        vertex-mapper.xml
     </mappers>
 </configuration>

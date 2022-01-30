@@ -1,4 +1,4 @@
-package com.solvd.navigatorProyect.dao.interfaces;
+package com.solvd.navigatorProject.dao.interfaces;
 
 import java.util.List;
 
