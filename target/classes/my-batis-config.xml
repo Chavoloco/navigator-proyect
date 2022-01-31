@@ -18,6 +18,7 @@
     <mappers>
         <mapper resource="mappers/node-mapper.xml"/>
         <mapper resource="mappers/vertex-mapper.xml"/>
+        <mapper resource="mappers/node-has-vertices.xml" />
     </mappers>
 </configuration>
 

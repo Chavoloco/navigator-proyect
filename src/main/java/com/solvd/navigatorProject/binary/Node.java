@@ -1,20 +1,28 @@
 package com.solvd.navigatorProject.binary;
 
+import java.util.List;
+
 public class Node {
     private long id;
     private String name;
     private long positionX;
     private long positionY;
-    private long vertexId;
+    private List<Vertex> vertices;
 
-    public Node() {
-    }
-
-    public Node( String name, long positionX, long positionY, long vertexId) {
+    public Node(String name, long positionX, long positionY, List<Vertex> vertices) {
         this.name = name;
         this.positionX = positionX;
         this.positionY = positionY;
-        this.vertexId = vertexId;
+        this.vertices = vertices;
+    }
+
+    public Node(String name, long positionX, long positionY) {
+        this.name = name;
+        this.positionX = positionX;
+        this.positionY = positionY;
+    }
+
+    public Node() {
     }
 
     public long getId() {
@@ -49,12 +57,16 @@ public class Node {
         this.positionY = positionY;
     }
 
-    public long getVertexId() {
-        return vertexId;
+    public List<Vertex> getVertices() {
+        return vertices;
     }
 
-    public void setVertexId(long vertexId) {
-        this.vertexId = vertexId;
+    public void setVertices(List<Vertex> vertices) {
+        this.vertices = vertices;
+    }
+
+    public void addVertices(Vertex vertex){
+        this.vertices.add(vertex);
     }
 
     @Override
@@ -64,7 +76,7 @@ public class Node {
                 ", name='" + name + '\'' +
                 ", positionX=" + positionX +
                 ", positionY=" + positionY +
-                ", vertexId=" + vertexId +
+                ", vertices" + vertices +
                 '}';
     }
 }

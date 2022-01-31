@@ -41,9 +41,14 @@ public class Vertex {
         return nodes;
     }
 
+    public void setNodes(List<Node> nodes){
+        this.nodes = nodes;
+    }
+
     public void addNode(Node nodes) {
         this.nodes.add(nodes);
     }
+
 
     @Override
     public String toString() {
