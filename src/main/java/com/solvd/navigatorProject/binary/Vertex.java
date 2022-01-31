@@ -5,19 +5,18 @@ import java.util.List;
 
 public class Vertex {
     private long id;
-    private double weight;
+    private double distance;
     private List<Node> nodes;
 
     public Vertex() {
     }
 
-    public Vertex(double weight) {
-        this.weight = weight;
-        this.nodes = new ArrayList<Node>();
+    public Vertex(double distance) {
+        this.distance = distance;
     }
 
-    public Vertex(double weight, List<Node> nodes) {
-        this.weight = weight;
+    public Vertex(double distance, List<Node> nodes) {
+        this.distance = distance;
         this.nodes = nodes;
     }
 
@@ -29,12 +28,12 @@ public class Vertex {
         this.id = id;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getDistance() {
+        return distance;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public List<Node> getNodes() {
@@ -54,7 +53,7 @@ public class Vertex {
     public String toString() {
         return "Vertex{" +
                 "id=" + id +
-                ", weight=" + weight +
+                ", distance=" + distance +
                 ", nodes=" + nodes +
                 '}';
     }

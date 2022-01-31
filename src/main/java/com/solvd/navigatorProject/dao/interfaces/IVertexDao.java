@@ -6,6 +6,7 @@ import com.solvd.navigatorProject.binary.Vertex;
 import java.util.List;
 
 public interface IVertexDao extends IEntityDao<Vertex>{
-    double getWeightById();
+
+    double getDistanceById();
 
 }

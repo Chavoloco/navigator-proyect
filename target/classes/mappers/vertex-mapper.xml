@@ -6,12 +6,12 @@
 
     <sql id="body">
         v.id AS vertex_id,
-        v.weight AS vertex_weight
+        v.distance AS vertex_distance
     </sql>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Vertex">
-        INSERT INTO vertices (weight)
-        VALUES ( #{weight} );
+        INSERT INTO vertices (distance)
+        VALUES ( #{distance} );
     </insert>
     <select id="getAll" resultMap="VertexResultMap">
         SELECT
@@ -35,12 +35,12 @@
     <delete id="delete" parameterType="int">
         DELETE FROM vertices WHERE id = #{id};
     </delete>
-    <select id="getWeightById" resultMap="VertexResultMap">
-        SELECT weight FROM vertices WHERE id = #{id};
+    <select id="getDistanceById" resultMap="VertexResultMap">
+        SELECT distance FROM vertices WHERE id = #{id};
     </select>
     <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
         <id column="vertex_id" property="id"/>
-        <result column="vertex_weight" property="weight"/>
+        <result column="vertex_distance" property="distance"/>
         <collection property="nodes" resultMap="com.solvd.navigatorProject.dao.interfaces.INodeDao.NodeResultMap"
                     javaType="ArrayList"/>
     </resultMap>
