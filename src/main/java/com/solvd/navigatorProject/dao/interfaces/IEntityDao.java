@@ -5,9 +5,9 @@ import java.util.List;
 public interface IEntityDao <T>{
     void save(T t);
 
-    T getById(long Id);
+    T getById(long id);
 
-    void delete(T t);
+    void delete(long id);
 
     List<T> getAll();
 }

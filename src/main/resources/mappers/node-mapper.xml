@@ -9,14 +9,11 @@
     <select id="getById" resultMap="NodeResultMap">
         SELECT id, position_x, position_y, name, vertices_id FROM nodes WHERE id = #{id}
     </select>
-    <insert id="save" parameterType="com.solvd.navigatorProject.binary.Node">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
         INSERT INTO nodes (position_x, position_y, name, vertices_id )
         VALUES ( #{positionX}, #{positionY}, #{name}, #{vertexId} );
-        <!--<selectKey keyProperty="id" resultType="long" order="AFTER">
-            select last_insert_id() as id
-        </selectKey>-->
     </insert>
-    <delete id="delete" parameterType="int">
+    <delete id="delete" >
         DELETE FROM nodes WHERE id = #{id};
     </delete>
     <resultMap id="NodeResultMap" type="com.solvd.navigatorProject.binary.Node" autoMapping="false">
