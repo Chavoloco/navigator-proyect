@@ -5,15 +5,9 @@ import com.solvd.navigatorProject.binary.Vertex;
 
 import java.util.List;
 
-public interface IVertexService {
+public interface NodesHasVerticesService {
 
-    void save(Vertex vertex);
+    void joinNodes(Node nodeA, Vertex vertex, Node nodeB);
 
-    Vertex getById(long id);
-
-    void delete(long id);
-
-    List<Vertex> getAll();
-
-    double getWeightById();
+    void joinNodes(Node nodeA, Vertex vertex);
 }
