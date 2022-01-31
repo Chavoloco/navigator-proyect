@@ -2,28 +2,25 @@
 
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.solvd.navigatorProject.binary.Node">
-<!--<mapper namespace="com.solvd.navigatorProject.dao.interfaces.INodeDao">-->
+<mapper namespace="com.solvd.navigatorProject.dao.interfaces.INodeDao">
     <select id="getAll" resultMap="NodeResultMap">
-        SELECT id, position_x, position_y, name FROM nodes
+        SELECT id, position_x, position_y, name, vertices_id FROM nodes
     </select>
     <select id="getById" resultMap="NodeResultMap">
-        SELECT id, position_x, position_y, name FROM nodes WHERE id = #{id}
+        SELECT id, position_x, position_y, name, vertices_id FROM nodes WHERE id = #{id}
     </select>
-    <insert id="save" parameterType="Node">
-        INSERT INTO nodes (position_x, position_y, name )
-        VALUES ( #{position_x}, #{position_y}, #{name} );
-        <selectKey keyProperty="id" resultType="int" order="AFTER">
-            select last_insert_id() as id
-        </selectKey>
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
+        INSERT INTO nodes (position_x, position_y, name, vertices_id )
+        VALUES ( #{positionX}, #{positionY}, #{name}, #{vertexId} );
     </insert>
-    <delete id="delete" parameterType="int">
+    <delete id="delete" >
         DELETE FROM nodes WHERE id = #{id};
     </delete>
-    <resultMap id="NodeResultMap" type="Node" autoMapping="false">
+    <resultMap id="NodeResultMap" type="com.solvd.navigatorProject.binary.Node" autoMapping="false">
         <id column="id" property="id"/>
         <result column="position_x" property="positionX"/>
         <result column="position_y" property="positionY"/>
         <result column="name" property="name"/>
+        <result column="vertices_id" property="vertexId"/>
     </resultMap>
 </mapper>

@@ -3,19 +3,28 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.solvd.navigatorProject.dao.interfaces.IVertexDao">
-    <insert id="save" parameterType="com.solvd.navigatorProject.binary.Vertex">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Vertex">
         INSERT INTO vertices (weight)
         VALUES ( #{weight} );
     </insert>
     <select id="getAll" resultMap="VertexResultMap">
-        SELECT id, weight FROM vertices
+        SELECT v.id, v.weight, n.id, n.position_x, n.position_y, n.vertex_id
+        FROM vertices v LEFT JOIN nodes n ON v.id = n.vertex_id;
     </select>
     <select id="getById" resultMap="VertexResultMap">
-        SELECT id, weight FROM vertices WHERE id = #{id}
+        SELECT v.id, v.weight, n.id, n.position_x, n.position_y, n.vertex_id
+        FROM vertices v LEFT JOIN nodes n ON v.id = n.vertex_id
+        WHERE v.id = #{id};
+    </select>
+    <delete id="delete" parameterType="int">
+        DELETE FROM vertices WHERE id = #{id};
+    </delete>
+    <select id="getWeightById" resultMap="VertexResultMap" >
+        SELECT weight FROM vertices WHERE id = #{id};
     </select>
     <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
         <id column="id" property="id"/>
         <result column="weight" property="weight"/>
-        <collection property="nodes" javaType="ArrayList" />
+        <collection property="nodes" resultMap="com.solvd.navigatorProject.dao.interfaces.INodeDao.nodeResultMap" javaType="ArrayList" />
     </resultMap>
 </mapper>
