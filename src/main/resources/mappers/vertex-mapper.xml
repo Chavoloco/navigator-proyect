@@ -14,10 +14,6 @@
         VALUES ( #{distance} );
     </insert>
 
-    <select id="getDistanceById" resultMap="VertexResultMap">
-        SELECT v.distance FROM vertices v WHERE id = #{id}
-    </select>
-
     <select id="getAll" resultMap="VertexResultMap">
         SELECT
         <include refid="body"></include>

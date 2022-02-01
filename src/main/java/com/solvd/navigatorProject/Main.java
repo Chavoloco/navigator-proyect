@@ -22,7 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-
+        NodeServiceImpl nodeService = new NodeServiceImpl();
+        Node node = nodeService.getById(30);
+        log.info(node.getName());
 
         VertexServiceImpl vertex = new VertexServiceImpl();
         floydAlgorithm();

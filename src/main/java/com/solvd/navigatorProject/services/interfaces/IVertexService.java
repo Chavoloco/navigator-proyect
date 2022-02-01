@@ -14,6 +14,6 @@ public interface IVertexService {
 
     List<Vertex> getAll();
 
-    double getDistanceById();
+    double getDistanceById(long id);
 
 }

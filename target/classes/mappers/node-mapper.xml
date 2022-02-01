@@ -27,12 +27,11 @@
         FROM vertices AS v
         LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
-        WHERE vertices_id = #{vertexId};
+        WHERE nodes_id = #{nodesId};
     </select>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
         INSERT INTO nodes ( name )
-        INSERT INTO nodes (name)
         VALUES ( #{name} );
     </insert>
 
