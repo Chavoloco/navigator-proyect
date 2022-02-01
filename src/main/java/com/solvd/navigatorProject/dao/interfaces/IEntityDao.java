@@ -10,4 +10,8 @@ public interface IEntityDao<T> {
     void delete(long id);
 
     List<T> getAll();
+
+    T findFist();
+
+    T findLast();
 }

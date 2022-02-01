@@ -13,4 +13,8 @@ public interface INodeService {
     void delete(long id);
 
     List<Node> getAll();
+
+    Node findFist();
+
+    Node findLast();
 }

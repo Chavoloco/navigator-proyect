@@ -31,6 +31,21 @@
 
     </select>
 
+    <select id="findFist" resultMap="NodeResultMap">
+        SELECT
+        <include refid="body"></include>
+        FROM nodes n
+        LIMIT 1;
+    </select>
+
+    <select id="findLast" resultMap="NodeResultMap">
+        select
+        <include refid="body"></include>
+        FROM nodes n
+        ORDER BY node_id DESC
+        LIMIT 1;
+    </select>
+
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
         INSERT INTO nodes ( name )
         VALUES ( #{name} );

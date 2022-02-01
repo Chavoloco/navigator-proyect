@@ -16,4 +16,8 @@ public interface IVertexService {
 
     double getDistanceById(long id);
 
+    Vertex findFist();
+
+    Vertex findLast();
+
 }

@@ -60,4 +60,30 @@ public class NodeServiceImpl implements INodeService {
         }
         return nodeList;
     }
+
+    @Override
+    public Node findFist() {
+        Node node = null;
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            INodeDao nodeDao = session.getMapper(INodeDao.class);
+            node = nodeDao.findFist();
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return node;
+    }
+
+    @Override
+    public Node findLast() {
+        Node node = null;
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            INodeDao nodeDao = session.getMapper(INodeDao.class);
+            node = nodeDao.findLast();
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return node;
+    }
 }

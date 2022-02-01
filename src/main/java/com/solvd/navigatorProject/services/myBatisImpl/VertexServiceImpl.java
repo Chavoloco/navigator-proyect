@@ -76,4 +76,13 @@ public class VertexServiceImpl implements IVertexService {
         return distance;
     }
 
+    @Override
+    public Vertex findFist() {
+        return null;
+    }
+
+    @Override
+    public Vertex findLast() {
+        return null;
+    }
 }
