@@ -9,11 +9,6 @@ import com.solvd.navigatorProject.services.myBatisImpl.VertexServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-
 
 public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
@@ -33,31 +28,31 @@ public class Main {
     }
 
     public static void createInitialMatrix() {
-        long matrix[][] = new long[numberOfVertices][numberOfVertices];
+        long[][] matrix = new long[numberOfVertices][numberOfVertices];
         int c = 0;
         int p = 0;
         for (Node node :
                 nodeService.getAll()) {
             if (c > numberOfVertices || p > numberOfVertices) break;
             c++;
-            for (Vertex vertex  :
-                  node.getVertices()) {
-                if (vertex.getNodes().contains(node)){
+            for (Vertex vertex :
+                    node.getVertices()) {
+                if (vertex.getNodes().contains(node)) {
                     matrix[c][p] = node.getId();
-                }else{
+                } else {
                     matrix[c][p] = INF;
                 }
                 p++;
             }
         }
 
-        for (int i = 0; i < matrix.length; ++i) {
+        for (long[] longs : matrix) {
             for (int j = 0; j < matrix.length; ++j) {
 
-                if (matrix[i][j] == INF)
+                if (longs[j] == INF)
                     System.out.print("INF ");
                 else
-                    System.out.print(matrix[i][j] + "   ");
+                    System.out.print(longs[j] + "   ");
             }
             System.out.println();
         }
@@ -71,9 +66,9 @@ public class Main {
         long shortestDistance = 0;
 
         long[][] matrix = {{0, 5, INF, 10},
-                          {INF, 0, 3, INF},
-                          {INF, INF, 0, 1},
-                          {INF, INF, INF, 0},};
+                {INF, 0, 3, INF},
+                {INF, INF, 0, 1},
+                {INF, INF, INF, 0},};
 
         for (int i = 0; i < numberOfVertices; i++)
             for (int j = 0; j < numberOfVertices; j++)
