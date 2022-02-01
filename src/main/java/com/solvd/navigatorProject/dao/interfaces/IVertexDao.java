@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IVertexDao extends IEntityDao<Vertex>{
 
-    double getDistanceById();
+    double getDistanceById(long id);
 
 }

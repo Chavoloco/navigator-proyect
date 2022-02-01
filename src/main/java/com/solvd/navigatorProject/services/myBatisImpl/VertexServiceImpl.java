@@ -60,8 +60,16 @@ public class VertexServiceImpl implements IVertexService {
     }
 
     @Override
-    public double getDistanceById() {
-        return 0;
+    public double getDistanceById(long id) {
+        double distance = 0;
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            distance = vertexDao.getDistanceById(id);
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return distance;
     }
 
 }
