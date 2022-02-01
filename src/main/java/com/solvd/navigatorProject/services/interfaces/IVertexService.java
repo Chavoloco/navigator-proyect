@@ -1,6 +1,5 @@
 package com.solvd.navigatorProject.services.interfaces;
 
-import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 
 import java.util.List;
@@ -15,8 +14,6 @@ public interface IVertexService {
 
     List<Vertex> getAll();
 
-    double getDistanceById(long id);
-
-    double getShortestDistance(Node node);
+    double getDistanceById();
 
 }

@@ -10,13 +10,13 @@ public class Vertex {
     public Vertex() {
     }
 
+    public Vertex(double distance) {
+        this.distance = distance;
+    }
+
     public Vertex(double distance, List<Node> nodes) {
         this.distance = distance;
         this.nodes = nodes;
-    }
-
-    public Vertex(double distance) {
-        this.distance = distance;
     }
 
     public long getId() {

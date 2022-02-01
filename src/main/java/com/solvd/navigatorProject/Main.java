@@ -10,43 +10,59 @@ import com.solvd.navigatorProject.services.interfaces.NodesHasVerticesService;
 import com.solvd.navigatorProject.services.myBatisImpl.NodeServiceImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.NodesHasVerticesServicesImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.VertexServiceImpl;
-import com.solvd.navigatorProject.utils.MyBatisDAOFactory;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
+    private static final int numberOfVertices = 4;
+    private static final int INF = 999999999;
+    private static final long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];
 
     public static void main(String[] args) {
-        NodeServiceImpl nodeService = new NodeServiceImpl();
-        VertexServiceImpl vertexService = new VertexServiceImpl();
-        NodesHasVerticesServicesImpl nhs = new NodesHasVerticesServicesImpl();
 
-        List<Node> nodeList = new ArrayList<>();
-        nodeList = nodeService.getAll();
-        for (Node node :
-                nodeList) {
-            log.info("node: " + node.getName());
-            for (Vertex vertex :
-                    node.getVertices()) {
-                log.info("vertex distance: " + vertex.getDistance());
+
+
+        VertexServiceImpl vertex = new VertexServiceImpl();
+        floydAlgorithm();
+        createFinalMatrix();
+
+    }
+
+    public static void floydAlgorithm(){
+        long shortestDistance = 0;
+
+        long[][] matrix = {{0, 5, INF, 10},
+                          {INF, 0, 3, INF},
+                          {INF, INF, 0, 1},
+                          {INF, INF, INF, 0},};
+
+        for (int i = 0; i < numberOfVertices; i++)
+            for (int j = 0; j < numberOfVertices; j++)
+                finalMatrix[i][j] = matrix[i][j];
+        for (int k = 0; k < matrix.length; k++) {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    if (finalMatrix[i][k] + finalMatrix[k][j] < finalMatrix[i][j])
+                        finalMatrix[i][j] = finalMatrix[i][k] + finalMatrix[k][j];
+                    shortestDistance += finalMatrix[i][j];
+                }
             }
         }
-        List<Vertex> vertexList = new ArrayList<>();
-        vertexList = vertexService.getAll();
-        for (Vertex vertex :
-                vertexList) {
-            log.info("vertex distance: " + vertex.getDistance());
-            for (Node node :
-                    vertex.getNodes()) {
-                log.info("node: " + node.getName());
-
+    }
+    public static void createFinalMatrix(){
+        log.info('\n' + "Shortest distance matrix is: ");
+        for (int i=0; i<numberOfVertices; ++i)
+        {
+            for (int j=0; j<numberOfVertices; ++j)
+            {
+                if (finalMatrix[i][j]==INF)
+                    System.out.print("INF ");
+                else
+                    System.out.print(finalMatrix[i][j]+"   ");
             }
+            System.out.println();
         }
     }
 }

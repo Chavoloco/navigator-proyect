@@ -6,4 +6,10 @@ import java.util.List;
 
 public interface INodesHasVerticesDao {
     void joinNodes(NodeHasVertices nhs);
+  
+    int deleteNode(long userId, long vertexId);
+
+    int addNode(long userId, long vertexId);
+
+    void joinNodes(long nodeId, long vertexId);
 }

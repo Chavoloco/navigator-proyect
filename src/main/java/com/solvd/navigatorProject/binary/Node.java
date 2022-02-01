@@ -7,7 +7,8 @@ public class Node {
     private String name;
     private List<Vertex> vertices;
 
-    public Node(String name,  List<Vertex> vertices) {
+
+    public Node(String name, List<Vertex> vertices) {
         this.name = name;
         this.vertices = vertices;
     }

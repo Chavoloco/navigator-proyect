@@ -43,8 +43,8 @@
         DELETE FROM vertices WHERE id = #{id};
     </delete>
 
-    <select id="getWeightById" resultMap="VertexResultMap">
-        SELECT weight FROM vertices WHERE id = #{id};
+    <select id="getDistanceById" resultMap="VertexResultMap">
+        SELECT distance FROM vertices WHERE id = #{id};
     </select>
 
     <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
