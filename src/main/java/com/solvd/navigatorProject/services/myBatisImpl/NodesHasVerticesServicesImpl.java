@@ -1,7 +1,6 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
 import com.solvd.navigatorProject.binary.NodeHasVertices;
-import com.solvd.navigatorProject.dao.interfaces.INodesHasVerticesDao;
 import com.solvd.navigatorProject.services.interfaces.NodesHasVerticesService;
 import com.solvd.navigatorProject.utils.MyBatisDAOFactory;
 import org.apache.ibatis.session.SqlSession;
