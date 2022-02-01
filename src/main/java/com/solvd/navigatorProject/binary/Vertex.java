@@ -1,6 +1,5 @@
 package com.solvd.navigatorProject.binary;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Vertex {
@@ -40,7 +39,7 @@ public class Vertex {
         return nodes;
     }
 
-    public void setNodes(List<Node> nodes){
+    public void setNodes(List<Node> nodes) {
         this.nodes = nodes;
     }
 

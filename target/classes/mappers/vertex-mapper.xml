@@ -13,6 +13,11 @@
         INSERT INTO vertices (distance)
         VALUES ( #{distance} );
     </insert>
+
+    <select id="getDistanceById" resultMap="VertexResultMap">
+        SELECT v.distance FROM vertices v WHERE id = #{id}
+    </select>
+
     <select id="getAll" resultMap="VertexResultMap">
         SELECT
         <include refid="body"></include>
@@ -20,8 +25,9 @@
         <include refid="com.solvd.navigatorProject.dao.interfaces.INodeDao.body"></include>
         FROM nodes AS n
         LEFT JOIN nodes_has_vertices AS nhv ON n.id = nhv.nodes_id
-        LEFT JOIN vertices AS v ON v.id = nhv.vertices_id
+        LEFT JOIN vertices AS v ON v.id = nhv.vertices_id;
     </select>
+
     <select id="getById" resultMap="VertexResultMap">
         SELECT
         <include refid="body"></include>
@@ -32,12 +38,15 @@
         LEFT JOIN vertices AS v ON v.id = nhv.vertices_id
         WHERE v.id = #{id};
     </select>
-    <delete id="delete" parameterType="int">
+
+    <delete id="delete">
         DELETE FROM vertices WHERE id = #{id};
     </delete>
+
     <select id="getDistanceById" resultMap="VertexResultMap">
         SELECT distance FROM vertices WHERE id = #{id};
     </select>
+
     <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
         <id column="vertex_id" property="id"/>
         <result column="vertex_distance" property="distance"/>

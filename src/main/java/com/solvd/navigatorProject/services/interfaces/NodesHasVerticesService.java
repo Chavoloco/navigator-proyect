@@ -1,9 +1,9 @@
 package com.solvd.navigatorProject.services.interfaces;
 
-import com.solvd.navigatorProject.binary.Node;
-import com.solvd.navigatorProject.binary.Vertex;
+import com.solvd.navigatorProject.binary.NodeHasVertices;
 
 public interface NodesHasVerticesService {
 
-    void joinNodes(long nodeId, long vertexId);
+    void joinNodes(NodeHasVertices nhs);
+
 }

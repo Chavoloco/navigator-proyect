@@ -1,5 +1,6 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
+import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.dao.interfaces.IVertexDao;
 import com.solvd.navigatorProject.services.interfaces.IVertexService;
@@ -43,7 +44,13 @@ public class VertexServiceImpl implements IVertexService {
 
     @Override
     public void delete(long id) {
-
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            vertexDao.delete(id);
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     @Override
@@ -70,6 +77,11 @@ public class VertexServiceImpl implements IVertexService {
             log.error(e.getMessage(), e);
         }
         return distance;
+    }
+
+    @Override
+    public double getShortestDistance(Node node) {
+        return 0;
     }
 
 }

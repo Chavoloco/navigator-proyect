@@ -18,6 +18,7 @@
         LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
     </select>
+
     <select id="getById" resultMap="NodeResultMap">
         SELECT
         <include refid="body"></include>
@@ -28,13 +29,17 @@
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
         WHERE vertices_id = #{vertexId};
     </select>
+
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
+        INSERT INTO nodes ( name )
         INSERT INTO nodes (name)
         VALUES ( #{name} );
     </insert>
+
     <delete id="delete" >
         DELETE FROM nodes WHERE id = #{id};
     </delete>
+
     <resultMap id="NodeResultMap" type="com.solvd.navigatorProject.binary.Node" autoMapping="false">
         <id column="node_id" property="id"/>
         <result column="node_name" property="name"/>
