@@ -2,6 +2,7 @@ package com.solvd.navigatorProject;
 
 
 import com.solvd.navigatorProject.binary.Node;
+import com.solvd.navigatorProject.binary.NodeHasVertices;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.services.myBatisImpl.NodeServiceImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.NodesHasVerticesServicesImpl;
@@ -22,12 +23,6 @@ public class Main {
     private static final long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];
 
     public static void main(String[] args) {
-
-        List<Node> nodeList = nodeService.getAll();
-
-        nodeService.save(new Node("ASJD"));
-
-        log.info(nodeService.getById(21).getName());
 
 
         //createInitialMatrix();
