@@ -12,6 +12,5 @@ public class NodesHasVerticesServicesImpl implements NodesHasVerticesService {
 
     @Override
     public void joinNodes(long nodeId, long vertexId) {
-
     }
 }
