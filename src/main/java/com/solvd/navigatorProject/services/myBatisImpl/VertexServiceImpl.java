@@ -76,6 +76,4 @@ public class VertexServiceImpl implements IVertexService {
         return distance;
     }
 
-
-
 }
