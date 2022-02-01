@@ -26,13 +26,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        for (Node node : nodeService.getAll()) {
-            log.info("node id: " + node.getId() + "node name: " + node.getName());
-        }
-        for (Vertex vertex : vertexService.getAll()) {
-            log.info("vertex id: " + vertex.getId() + " vertex distance: " + vertex.getDistance());
-        }
-
         createInitialMatrix();
         floydAlgorithm();
         createFinalMatrix();
@@ -45,6 +38,7 @@ public class Main {
         int p = 0;
         for (Node node :
                 nodeService.getAll()) {
+            if (c > numberOfVertices || p > numberOfVertices) break;
             c++;
             for (Vertex vertex  :
                   node.getVertices()) {
