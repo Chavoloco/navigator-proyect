@@ -13,46 +13,45 @@ import java.util.List;
 
 public class VertexServiceImpl implements IVertexService {
     private static final Logger log = LogManager.getLogger(VertexServiceImpl.class);
+    private final int numberOfVertices = 4;
     private final int INF = 999999999;
-    private int numberOfVertices = 4;
     private final long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];
 
     @Override
-    public long[][] createInitialMatrix() {
-        return new long[][]{{0, 5, INF, 10},
-                {INF, 0, 3, INF},
-                {INF, INF, 0, 1},
-                {INF, INF, INF, 0},};
-    }
+    public long getShortestDistance() {
+        long shortestDistance = 0;
 
-    @Override
-    public void getShortestDistance() {
+        long[][] matrix = {{0, 5, INF, 10},
+                          {INF, 0, 3, INF},
+                          {INF, INF, 0, 1},
+                          {INF, INF, INF, 0},};
 
         for (int i = 0; i < numberOfVertices; i++)
             for (int j = 0; j < numberOfVertices; j++)
-                finalMatrix[i][j] = createInitialMatrix()[i][j];
-        for (int k = 0; k < createInitialMatrix().length; k++) {
-            for (int i = 0; i < createInitialMatrix().length; i++) {
-                for (int j = 0; j < createInitialMatrix().length; j++) {
+                finalMatrix[i][j] = matrix[i][j];
+        for (int k = 0; k < matrix.length; k++) {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
                     if (finalMatrix[i][k] + finalMatrix[k][j] < finalMatrix[i][j])
                         finalMatrix[i][j] = finalMatrix[i][k] + finalMatrix[k][j];
+                     shortestDistance += finalMatrix[i][j];
                 }
             }
         }
+        return shortestDistance;
     }
 
     @Override
     public void createShortDistanceMatrix() {
-        log.info("Shortest distance between every pair of vertices is: ");
-
+        log.info("Shortest distance matrix is: ");
         for (int i=0; i<numberOfVertices; ++i)
         {
             for (int j=0; j<numberOfVertices; ++j)
             {
                 if (finalMatrix[i][j]==INF)
-                    log.info("INF ");
+                    System.out.print("INF ");
                 else
-                    log.info(finalMatrix[i][j]+"   ");
+                    System.out.print(finalMatrix[i][j]+"   ");
             }
             System.out.println();
         }
@@ -113,7 +112,7 @@ public class VertexServiceImpl implements IVertexService {
         return numberOfVertices;
     }
 
-    public void setNumberOfVertices(int numberOfVertices) {
-        this.numberOfVertices = numberOfVertices;
+    public long[][] getFinalMatrix() {
+        return finalMatrix;
     }
 }

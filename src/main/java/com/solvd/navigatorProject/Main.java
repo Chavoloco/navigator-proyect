@@ -13,6 +13,7 @@ public class Main {
 
         VertexServiceImpl vertex = new VertexServiceImpl();
         vertex.getShortestDistance();
+        vertex.createShortDistanceMatrix();
 
     }
 }
