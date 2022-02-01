@@ -1,6 +1,5 @@
 package com.solvd.navigatorProject.services.interfaces;
 
-import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 
 import java.util.List;
@@ -20,5 +19,7 @@ public interface IVertexService {
     void getShortestDistance();
 
     long[][] createInitialMatrix();
+
+    void createShortDistanceMatrix();
 
 }
