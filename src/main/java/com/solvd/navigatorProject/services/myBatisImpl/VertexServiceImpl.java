@@ -18,46 +18,6 @@ public class VertexServiceImpl implements IVertexService {
     private final long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];
 
     @Override
-    public long getShortestDistance() {
-        long shortestDistance = 0;
-
-        long[][] matrix = {{0, 5, INF, 10},
-                          {INF, 0, 3, INF},
-                          {INF, INF, 0, 1},
-                          {INF, INF, INF, 0},};
-
-        for (int i = 0; i < numberOfVertices; i++)
-            for (int j = 0; j < numberOfVertices; j++)
-                finalMatrix[i][j] = matrix[i][j];
-        for (int k = 0; k < matrix.length; k++) {
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix.length; j++) {
-                    if (finalMatrix[i][k] + finalMatrix[k][j] < finalMatrix[i][j])
-                        finalMatrix[i][j] = finalMatrix[i][k] + finalMatrix[k][j];
-                     shortestDistance += finalMatrix[i][j];
-                }
-            }
-        }
-        return shortestDistance;
-    }
-
-    @Override
-    public void createShortDistanceMatrix() {
-        log.info('\n' + "Shortest distance matrix is: ");
-        for (int i=0; i<numberOfVertices; ++i)
-        {
-            for (int j=0; j<numberOfVertices; ++j)
-            {
-                if (finalMatrix[i][j]==INF)
-                    System.out.print("INF ");
-                else
-                    System.out.print(finalMatrix[i][j]+"   ");
-            }
-            System.out.println();
-        }
-    }
-
-    @Override
     public void save(Vertex vertex) {
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
             IVertexDao vertexDao = session.getMapper(IVertexDao.class);
@@ -104,15 +64,4 @@ public class VertexServiceImpl implements IVertexService {
         return 0;
     }
 
-    public int getINF() {
-        return INF;
-    }
-
-    public int getNumberOfVertices() {
-        return numberOfVertices;
-    }
-
-    public long[][] getFinalMatrix() {
-        return finalMatrix;
-    }
 }

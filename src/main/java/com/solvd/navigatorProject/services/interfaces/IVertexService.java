@@ -16,8 +16,4 @@ public interface IVertexService {
 
     double getDistanceById();
 
-    long getShortestDistance();
-
-    void createShortDistanceMatrix();
-
 }
