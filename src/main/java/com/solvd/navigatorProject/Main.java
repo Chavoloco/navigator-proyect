@@ -9,6 +9,8 @@ import com.solvd.navigatorProject.services.myBatisImpl.VertexServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
+
 
 public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
@@ -21,13 +23,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        createInitialMatrix();
+        List<Node> nodeList = nodeService.getAll();
+
+        nodeService.save(new Node("ASJD"));
+
+        log.info(nodeService.getById(21).getName());
+
+
+        //createInitialMatrix();
         floydAlgorithm();
         createFinalMatrix();
 
     }
 
-    public static void createInitialMatrix() {
+    /*public static void createInitialMatrix() {
         long[][] matrix = new long[numberOfVertices][numberOfVertices];
         int c = 0;
         int p = 0;
@@ -44,9 +53,9 @@ public class Main {
                 }
                 p++;
             }
-        }
+        }*/
 
-        for (long[] longs : matrix) {
+        /*for (long[] longs : matrix) {
             for (int j = 0; j < matrix.length; ++j) {
 
                 if (longs[j] == INF)
@@ -58,7 +67,7 @@ public class Main {
         }
 
 
-    }
+    }*/
 
     public static void floydAlgorithm() {
         NodeServiceImpl nodeService = new NodeServiceImpl();
