@@ -18,39 +18,50 @@ import java.util.Random;
 public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
     private static VertexServiceImpl vertexService = new VertexServiceImpl();
+    private static NodeServiceImpl nodeService = new NodeServiceImpl();
+    private static NodesHasVerticesServicesImpl nhs = new NodesHasVerticesServicesImpl();
     private static final int numberOfVertices = 4;
     private static final int INF = 999999999;
     private static final long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];
-    private static final List<Long> nodesId = new ArrayList<>();
 
     public static void main(String[] args) {
-        NodesHasVerticesServicesImpl nhs = new NodesHasVerticesServicesImpl();
-        VertexServiceImpl vertex = new VertexServiceImpl();
-        NodeServiceImpl nodeService = new NodeServiceImpl();
-        List<Vertex> vertexList = vertex.getAll();
 
-        Node node = nodeService.getById(2);
-
-        log.info(node.getName());
-
+        createInitialMatrix();
         floydAlgorithm();
         createFinalMatrix();
-        createInitialMatrix();
 
     }
 
     public static void createInitialMatrix() {
-        Random random = new Random();
-        Collections.shuffle(nodesId);
-
-        int randomAmountNodes = 4;
-
-        log.info(nodesId.get(0));
-
-        List<Long> randomNodes = nodesId.subList(0, randomAmountNodes);
-        for (Long aLong : randomNodes) {
-            log.info(aLong);
+        long matrix[][] = new long[numberOfVertices][numberOfVertices];
+        int c = 0;
+        int p = 0;
+        for (Node node :
+                nodeService.getAll()) {
+            if (c > numberOfVertices || p > numberOfVertices) break;
+            c++;
+            for (Vertex vertex  :
+                  node.getVertices()) {
+                if (vertex.getNodes().contains(node)){
+                    matrix[c][p] = node.getId();
+                }else{
+                    matrix[c][p] = INF;
+                }
+                p++;
+            }
         }
+
+        for (int i = 0; i < matrix.length; ++i) {
+            for (int j = 0; j < matrix.length; ++j) {
+
+                if (matrix[i][j] == INF)
+                    System.out.print("INF ");
+                else
+                    System.out.print(matrix[i][j] + "   ");
+            }
+            System.out.println();
+        }
+
 
     }
 
@@ -91,11 +102,4 @@ public class Main {
         }
     }
 
-    public static VertexServiceImpl getVertexService() {
-        return vertexService;
-    }
-
-    public static void setVertexService(VertexServiceImpl vertexService) {
-        Main.vertexService = vertexService;
-    }
 }

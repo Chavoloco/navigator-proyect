@@ -27,7 +27,8 @@
         FROM vertices AS v
         LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
-        WHERE nodes_id = #{nodesId};
+        WHERE nodes_id = #{nodeId};
+
     </select>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
