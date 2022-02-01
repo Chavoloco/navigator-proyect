@@ -1,6 +1,6 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
-import com.solvd.navigatorProject.Main;
+import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.dao.interfaces.IVertexDao;
 import com.solvd.navigatorProject.services.interfaces.IVertexService;
@@ -58,7 +58,12 @@ public class VertexServiceImpl implements IVertexService {
     }
 
     @Override
-    public double getWeightById() {
+    public double getDistanceById(long id) {
+        return 0;
+    }
+
+    @Override
+    public double getShortestDistance(Node node) {
         return 0;
     }
 }
