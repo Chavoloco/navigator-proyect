@@ -39,7 +39,7 @@
         WHERE v.id = #{id};
     </select>
 
-    <delete id="delete" parameterType="int">
+    <delete id="delete">
         DELETE FROM vertices WHERE id = #{id};
     </delete>
 

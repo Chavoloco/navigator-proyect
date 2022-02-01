@@ -23,6 +23,6 @@ public class Main {
         NodeServiceImpl nodeService = new NodeServiceImpl();
         VertexServiceImpl vertexService =new VertexServiceImpl();
 
-        vertexService.getDistanceById(1);
+
     }
 }

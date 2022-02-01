@@ -41,7 +41,17 @@ public class VertexServiceImpl implements IVertexService {
 
     @Override
     public void delete(long id) {
+<<<<<<< Updated upstream
         
+=======
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            vertexDao.delete(id);
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+>>>>>>> Stashed changes
     }
 
     @Override
@@ -59,7 +69,15 @@ public class VertexServiceImpl implements IVertexService {
 
     @Override
     public double getDistanceById(long id) {
-        return 0;
+        double distance = 0;
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            distance = vertexDao.getDistanceById(id);
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return distance;
     }
 
     @Override
