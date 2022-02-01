@@ -79,9 +79,4 @@ public class VertexServiceImpl implements IVertexService {
         return distance;
     }
 
-    @Override
-    public double getShortestDistance(Node node) {
-        return 0;
-    }
-
 }

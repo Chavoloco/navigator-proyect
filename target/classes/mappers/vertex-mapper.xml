@@ -43,9 +43,6 @@
         DELETE FROM vertices WHERE id = #{id};
     </delete>
 
-    <select id="getDistanceById" resultMap="VertexResultMap">
-        SELECT distance FROM vertices WHERE id = #{id};
-    </select>
 
     <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
         <id column="vertex_id" property="id"/>
