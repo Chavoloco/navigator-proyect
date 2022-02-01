@@ -60,9 +60,9 @@ public class Main {
         long shortestDistance = 0;
 
         long[][] matrix = {{0, 5, INF, 10},
-                {INF, 0, 3, INF},
-                {INF, INF, 0, 1},
-                {INF, INF, INF, 0},};
+                          {INF, 0, 3, INF},
+                          {INF, INF, 0, 1},
+                          {INF, INF, INF, 0},};
 
         for (int i = 0; i < numberOfVertices; i++)
             for (int j = 0; j < numberOfVertices; j++)
