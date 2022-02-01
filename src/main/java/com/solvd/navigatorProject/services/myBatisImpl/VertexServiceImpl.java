@@ -41,7 +41,7 @@ public class VertexServiceImpl implements IVertexService {
 
     @Override
     public void delete(long id) {
-
+        
     }
 
     @Override
