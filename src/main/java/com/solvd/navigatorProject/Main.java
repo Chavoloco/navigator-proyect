@@ -41,9 +41,25 @@ public class Main {
 
     public static void createInitialMatrix() {
         long matrix[][] = new long[numberOfVertices][numberOfVertices];
+        int c = 0;
+        int p = 0;
+        for (Node node :
+                nodeService.getAll()) {
+            c++;
+            for (Vertex vertex  :
+                  node.getVertices()) {
+                if (vertex.getNodes().contains(node)){
+                    matrix[c][p] = node.getId();
+                }else{
+                    matrix[c][p] = INF;
+                }
+                p++;
+            }
+        }
 
         for (int i = 0; i < matrix.length; ++i) {
             for (int j = 0; j < matrix.length; ++j) {
+
                 if (matrix[i][j] == INF)
                     System.out.print("INF ");
                 else
