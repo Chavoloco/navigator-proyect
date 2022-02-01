@@ -6,8 +6,6 @@
 
     <sql id="body">
         n.id AS node_id,
-        n.position_x AS node_position_x,
-        n.position_y AS node_position_y,
         n.name AS node_name
     </sql>
 
@@ -20,6 +18,7 @@
         LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
     </select>
+
     <select id="getById" resultMap="NodeResultMap">
         SELECT
         <include refid="body"></include>
@@ -30,17 +29,18 @@
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
         WHERE vertices_id = #{vertexId};
     </select>
+
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Node">
-        INSERT INTO nodes (position_x, position_y, name )
-        VALUES ( #{positionX}, #{positionY}, #{name} );
+        INSERT INTO nodes ( name )
+        VALUES ( #{name} );
     </insert>
+
     <delete id="delete" >
         DELETE FROM nodes WHERE id = #{id};
     </delete>
+
     <resultMap id="NodeResultMap" type="com.solvd.navigatorProject.binary.Node" autoMapping="false">
         <id column="node_id" property="id"/>
-        <result column="node_position_x" property="positionX"/>
-        <result column="node_position_y" property="positionY"/>
         <result column="node_name" property="name"/>
         <collection property="vertices" resultMap="com.solvd.navigatorProject.dao.interfaces.IVertexDao.VertexResultMap" javaType="ArrayList" />
     </resultMap>

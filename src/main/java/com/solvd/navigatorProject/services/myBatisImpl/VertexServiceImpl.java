@@ -41,9 +41,6 @@ public class VertexServiceImpl implements IVertexService {
 
     @Override
     public void delete(long id) {
-<<<<<<< Updated upstream
-        
-=======
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
             IVertexDao vertexDao = session.getMapper(IVertexDao.class);
             vertexDao.delete(id);
@@ -51,7 +48,6 @@ public class VertexServiceImpl implements IVertexService {
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
->>>>>>> Stashed changes
     }
 
     @Override

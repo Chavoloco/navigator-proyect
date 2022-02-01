@@ -6,12 +6,12 @@
 
     <sql id="body">
         v.id AS vertex_id,
-        v.weight AS vertex_weight
+        v.distance AS vertex_distance
     </sql>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.solvd.navigatorProject.binary.Vertex">
-        INSERT INTO vertices (weight)
-        VALUES ( #{weight} );
+        INSERT INTO vertices (distance)
+        VALUES ( #{distance} );
     </insert>
 
     <select id="getDistanceById" resultMap="VertexResultMap">
@@ -25,7 +25,7 @@
         <include refid="com.solvd.navigatorProject.dao.interfaces.INodeDao.body"></include>
         FROM nodes AS n
         LEFT JOIN nodes_has_vertices AS nhv ON n.id = nhv.nodes_id
-        LEFT JOIN vertices AS v ON v.id = nhv.vertices_id
+        LEFT JOIN vertices AS v ON v.id = nhv.vertices_id;
     </select>
 
     <select id="getById" resultMap="VertexResultMap">
@@ -49,7 +49,7 @@
 
     <resultMap id="VertexResultMap" type="com.solvd.navigatorProject.binary.Vertex" autoMapping="false">
         <id column="vertex_id" property="id"/>
-        <result column="vertex_weight" property="weight"/>
+        <result column="vertex_distance" property="distance"/>
         <collection property="nodes" resultMap="com.solvd.navigatorProject.dao.interfaces.INodeDao.NodeResultMap"
                     javaType="ArrayList"/>
     </resultMap>

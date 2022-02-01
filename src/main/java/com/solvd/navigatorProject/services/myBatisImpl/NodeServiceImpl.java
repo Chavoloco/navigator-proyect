@@ -1,6 +1,5 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
-import com.solvd.navigatorProject.Main;
 import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.dao.interfaces.INodeDao;
 import com.solvd.navigatorProject.services.interfaces.INodeService;
