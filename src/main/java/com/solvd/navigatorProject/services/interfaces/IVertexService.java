@@ -17,6 +17,8 @@ public interface IVertexService {
 
     double getWeightById();
 
-    double getShortestDistance(Node node);
+    void getShortestDistance();
+
+    long[][] createInitialMatrix();
 
 }
