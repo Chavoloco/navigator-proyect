@@ -14,7 +14,7 @@ public interface IVertexService {
 
     List<Vertex> getAll();
 
-    double getWeightById();
+    double getDistanceById();
 
     long getShortestDistance();
 

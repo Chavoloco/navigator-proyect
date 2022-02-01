@@ -43,7 +43,7 @@ public class VertexServiceImpl implements IVertexService {
 
     @Override
     public void createShortDistanceMatrix() {
-        log.info("Shortest distance matrix is: ");
+        log.info('\n' + "Shortest distance matrix is: ");
         for (int i=0; i<numberOfVertices; ++i)
         {
             for (int j=0; j<numberOfVertices; ++j)
@@ -100,7 +100,7 @@ public class VertexServiceImpl implements IVertexService {
     }
 
     @Override
-    public double getWeightById() {
+    public double getDistanceById() {
         return 0;
     }
 
