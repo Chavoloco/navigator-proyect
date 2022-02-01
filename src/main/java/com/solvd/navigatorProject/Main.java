@@ -29,8 +29,9 @@ public class Main {
         NodeServiceImpl nodeService = new NodeServiceImpl();
         List<Vertex> vertexList = vertex.getAll();
 
-        Node node = nodeService.getById(2);
 
+        NodeServiceImpl nodeService = new NodeServiceImpl();
+       
         log.info(node.getName());
 
         floydAlgorithm();

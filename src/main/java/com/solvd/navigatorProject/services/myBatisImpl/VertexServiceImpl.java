@@ -14,9 +14,6 @@ import java.util.List;
 
 public class VertexServiceImpl implements IVertexService {
     private static final Logger log = LogManager.getLogger(VertexServiceImpl.class);
-    private final int numberOfVertices = 4;
-    private final int INF = 999999999;
-    private final long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];
 
     @Override
     public void save(Vertex vertex) {
