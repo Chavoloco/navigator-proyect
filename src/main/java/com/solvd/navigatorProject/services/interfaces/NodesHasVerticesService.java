@@ -5,6 +5,5 @@ import com.solvd.navigatorProject.binary.Vertex;
 
 public interface NodesHasVerticesService {
 
-    void joinNodes(Node nodeA, Vertex vertex);
-
+    void joinNodes(long nodeId, long vertexId);
 }
