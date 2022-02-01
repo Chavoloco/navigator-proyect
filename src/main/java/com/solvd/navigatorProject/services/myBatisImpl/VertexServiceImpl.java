@@ -1,6 +1,6 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
-import com.solvd.navigatorProject.Main;
+import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.dao.interfaces.IVertexDao;
 import com.solvd.navigatorProject.services.interfaces.IVertexService;
@@ -14,6 +14,12 @@ import java.util.List;
 
 public class VertexServiceImpl implements IVertexService {
     private static final Logger log = LogManager.getLogger(VertexServiceImpl.class);
+
+    @Override
+    public double getShortestDistance(Node node) {
+        //Algorithm
+        return 0;
+    }
 
     @Override
     public void save(Vertex vertex) {
