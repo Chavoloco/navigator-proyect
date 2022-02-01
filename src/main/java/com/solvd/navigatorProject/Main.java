@@ -18,19 +18,6 @@ public class Main {
         NodeServiceImpl nodeService = new NodeServiceImpl();
         VertexServiceImpl vertexService = new VertexServiceImpl();
 
-        List<Vertex> vertices = vertexService.getAll();
-        for (Vertex vertex :
-                vertices) {
-            log.info("vertex " + vertex.getId() + " " + vertex.getDistance());
-        }
-        List<Node> nodes = nodeService.getAll();
-        for (Node n :
-                nodes) {
-            for (Vertex vertex :
-                    n.getVertices()) {
-                log.info("vertex " + vertex.getId() + " " + vertex.getDistance());
 
-            }
-        }
     }
 }
