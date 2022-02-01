@@ -12,11 +12,6 @@ public class NodesHasVerticesServicesImpl implements NodesHasVerticesService {
     private static final Logger log = LogManager.getLogger(NodeServiceImpl.class);
 
     @Override
-    public void joinNodes(Node nodeA, Vertex vertex, Node nodeB) {
-
-    }
-
-    @Override
     public void joinNodes(Node nodeA, Vertex vertex) {
 
     }
