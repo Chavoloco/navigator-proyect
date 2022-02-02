@@ -2,7 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE SCHEMA IF NOT EXISTS `navigator_db` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `navigator_db` DEFAULT CHARACTER SET utf8mb4 ;
 USE `navigator_db` ;
 
 CREATE TABLE IF NOT EXISTS `navigator_db`.`nodes` (
@@ -19,25 +19,6 @@ CREATE TABLE IF NOT EXISTS `navigator_db`.`vertices` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `navigator_db`.`nodes_has_vertices` (
-  `nodes_id` INT NOT NULL,
-  `vertices_id` INT NOT NULL,
-  PRIMARY KEY (`nodes_id`, `vertices_id`),
-  INDEX `fk_nodes_has_vertices_vertices1_idx` (`vertices_id` ASC) VISIBLE,
-  INDEX `fk_nodes_has_vertices_nodes1_idx` (`nodes_id` ASC) VISIBLE,
-  CONSTRAINT `fk_nodes_has_vertices_nodes1`
-    FOREIGN KEY (`nodes_id`)
-    REFERENCES `navigator_db`.`nodes` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_nodes_has_vertices_vertices1`
-    FOREIGN KEY (`vertices_id`)
-    REFERENCES `navigator_db`.`vertices` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
