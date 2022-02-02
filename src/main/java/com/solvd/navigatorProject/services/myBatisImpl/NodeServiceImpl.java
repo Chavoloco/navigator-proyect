@@ -51,7 +51,7 @@ public class NodeServiceImpl implements INodeService {
     }
 
     @Override
-    public void connectNodes(Node node1, Node node2, Vertex vertex) {
+    public Node connectNodes(Node node1, Node node2, Vertex vertex) {
         try {
             VertexServiceImpl vertexService = new VertexServiceImpl();
             vertexService.setSource(node1);
@@ -60,6 +60,7 @@ public class NodeServiceImpl implements INodeService {
         } catch (Exception e){
             log.error(e.getMessage(), e);
         }
+        return node1;
     }
 
     @Override
