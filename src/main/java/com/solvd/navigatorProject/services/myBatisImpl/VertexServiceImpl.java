@@ -1,5 +1,6 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
+import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.dao.interfaces.IVertexDao;
 import com.solvd.navigatorProject.services.interfaces.IVertexService;
@@ -13,6 +14,28 @@ import java.util.List;
 
 public class VertexServiceImpl implements IVertexService {
     private static final Logger log = LogManager.getLogger(VertexServiceImpl.class);
+
+    @Override
+    public void setDestination(Node node) {
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            vertexDao.setDestination(node);
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void setSource(Node node) {
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            vertexDao.setSource(node);
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 
     @Override
     public void save(Vertex vertex) {
