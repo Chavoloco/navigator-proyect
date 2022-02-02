@@ -60,7 +60,6 @@ public class NodeServiceImpl implements INodeService {
         } catch (Exception e){
             log.error(e.getMessage(), e);
         }
-
     }
 
     @Override
@@ -101,5 +100,4 @@ public class NodeServiceImpl implements INodeService {
         }
         return node;
     }
-
 }
