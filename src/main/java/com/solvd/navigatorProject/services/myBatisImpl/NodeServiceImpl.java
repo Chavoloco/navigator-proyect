@@ -15,8 +15,6 @@ import java.util.List;
 public class NodeServiceImpl implements INodeService {
     private static final Logger log = LogManager.getLogger(NodeServiceImpl.class);
 
-
-
     @Override
     public void save(Node node) {
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
