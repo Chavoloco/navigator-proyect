@@ -20,7 +20,7 @@ public class Node {
     public Node() {
     }
 
-    public long getId() {
+    public long getId(long i) {
         return id;
     }
 
