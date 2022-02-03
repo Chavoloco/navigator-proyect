@@ -15,7 +15,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `navigator_db`.`vertices` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `distance` DECIMAL(5,2) NULL,
+  `distance` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -34,10 +34,9 @@ CREATE TABLE IF NOT EXISTS `navigator_db`.`nodes_has_vertices` (
   CONSTRAINT `fk_nodes_has_vertices_vertices1`
     FOREIGN KEY (`vertices_id`)
     REFERENCES `navigator_db`.`vertices` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
