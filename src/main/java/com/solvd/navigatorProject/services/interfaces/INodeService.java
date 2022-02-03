@@ -12,6 +12,8 @@ public interface INodeService {
 
     void delete(long id);
 
+    void deleteAll();
+
     List<Node> getAll();
 
     Node findFist();

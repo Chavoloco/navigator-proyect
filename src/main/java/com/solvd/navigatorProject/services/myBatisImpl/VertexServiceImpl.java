@@ -51,6 +51,17 @@ public class VertexServiceImpl implements IVertexService {
     }
 
     @Override
+    public void deleteAll() {
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            vertexDao.deleteAll();
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
+    @Override
     public List<Vertex> getAll() {
         List<Vertex> vertexList = new ArrayList<>();
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {

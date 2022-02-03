@@ -49,6 +49,17 @@ public class NodeServiceImpl implements INodeService {
     }
 
     @Override
+    public void deleteAll() {
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            INodeDao nodeDao = session.getMapper(INodeDao.class);
+            nodeDao.deleteAll();
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
+    @Override
     public List<Node> getAll() {
         List<Node> nodeList = new ArrayList<>();
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {

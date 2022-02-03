@@ -9,4 +9,6 @@ public interface INodesHasVerticesDao {
     void joinNodes(NodeHasVertices nhs);
 
     List<Vertex> getVerticesByNodeId(long id);
+
+    void deleteAllJoinedNodes();
 }

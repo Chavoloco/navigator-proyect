@@ -55,6 +55,10 @@
         DELETE FROM nodes WHERE id = #{id};
     </delete>
 
+    <delete id="deleteAll" >
+        DELETE FROM nodes WHERE id > 0;
+    </delete>
+
     <resultMap id="NodeResultMap" type="com.solvd.navigatorProject.binary.Node" autoMapping="false">
         <id column="node_id" property="id"/>
         <result column="node_name" property="name"/>

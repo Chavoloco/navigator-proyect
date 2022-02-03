@@ -12,6 +12,8 @@ public interface IVertexService {
 
     void delete(long id);
 
+    void deleteAll();
+
     List<Vertex> getAll();
 
     long getDistanceById(long id);

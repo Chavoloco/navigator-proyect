@@ -16,4 +16,8 @@
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
         WHERE n.id = #{nodeId};
     </select>
+    <delete id="deleteAllJoinedNodes" >
+        DELETE FROM nodes_has_vertices
+        WHERE nodes_id > 0 AND vertices_id > 0;
+    </delete>
 </mapper>

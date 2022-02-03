@@ -39,4 +39,15 @@ public class NodesHasVerticesServicesImpl implements NodesHasVerticesService {
         }
         return vertices;
     }
+
+    @Override
+    public void deleteAllJoinedNodes() {
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            INodesHasVerticesDao nodesHasVerticesDao = session.getMapper(INodesHasVerticesDao.class);
+            nodesHasVerticesDao.deleteAllJoinedNodes();
+            session.commit();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 }

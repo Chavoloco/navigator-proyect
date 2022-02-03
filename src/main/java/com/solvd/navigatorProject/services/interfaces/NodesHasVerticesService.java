@@ -11,4 +11,6 @@ public interface NodesHasVerticesService {
 
     List<Vertex> getVerticesByNodeId(long id);
 
+    void deleteAllJoinedNodes();
+
 }

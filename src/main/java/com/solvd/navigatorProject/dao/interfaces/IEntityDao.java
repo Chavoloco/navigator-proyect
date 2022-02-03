@@ -14,4 +14,6 @@ public interface IEntityDao<T> {
     T findFist();
 
     T findLast();
+
+    void deleteAll();
 }
