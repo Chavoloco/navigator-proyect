@@ -31,7 +31,6 @@ public class NodeServiceImpl implements INodeService {
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
             INodeDao nodeDao = session.getMapper(INodeDao.class);
             node = nodeDao.getById(id);
-            log.info(node);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

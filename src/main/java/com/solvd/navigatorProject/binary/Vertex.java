@@ -1,20 +1,21 @@
 package com.solvd.navigatorProject.binary;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Vertex {
     private long id;
-    private double distance;
+    private long distance;
     private List<Node> nodes;
 
     public Vertex() {
     }
 
-    public Vertex(double distance) {
+    public Vertex(long distance) {
         this.distance = distance;
     }
 
-    public Vertex(double distance, List<Node> nodes) {
+    public Vertex(long distance, List<Node> nodes) {
         this.distance = distance;
         this.nodes = nodes;
     }
@@ -27,11 +28,11 @@ public class Vertex {
         this.id = id;
     }
 
-    public double getDistance() {
+    public long getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(long distance) {
         this.distance = distance;
     }
 
@@ -53,7 +54,19 @@ public class Vertex {
         return "Vertex{" +
                 "id=" + id +
                 ", distance=" + distance +
-                ", nodes=" + nodes +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex vertex = (Vertex) o;
+        return id == vertex.id && distance == vertex.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, distance);
     }
 }

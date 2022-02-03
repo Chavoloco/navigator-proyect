@@ -14,7 +14,7 @@ public interface IVertexService {
 
     List<Vertex> getAll();
 
-    double getDistanceById(long id);
+    long getDistanceById(long id);
 
     Vertex findFist();
 

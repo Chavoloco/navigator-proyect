@@ -7,4 +7,13 @@
         INSERT INTO nodes_has_vertices (nodes_id, vertices_id)
         VALUES ( #{nodesId}, #{verticesId});
     </insert>
+
+    <select id="getVerticesByNodeId" resultMap="com.solvd.navigatorProject.dao.interfaces.IVertexDao.VertexResultMap">
+        SELECT
+        <include refid="com.solvd.navigatorProject.dao.interfaces.IVertexDao.body"></include>
+        FROM vertices v
+        LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
+        LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
+        WHERE n.id = #{nodeId};
+    </select>
 </mapper>
