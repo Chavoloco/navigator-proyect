@@ -16,21 +16,10 @@ public class VertexServiceImpl implements IVertexService {
     private static final Logger log = LogManager.getLogger(VertexServiceImpl.class);
 
     @Override
-    public void setDestination(Node node) {
+    public void setDestinationAndSource(long source, long destination, double distance) {
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
             IVertexDao vertexDao = session.getMapper(IVertexDao.class);
-            vertexDao.setDestination(node);
-            session.commit();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public void setSource(Node node) {
-        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
-            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
-            vertexDao.setSource(node);
+            vertexDao.setDestinationAndSource(source,destination,distance);
             session.commit();
         } catch (Exception e) {
             log.error(e.getMessage(), e);

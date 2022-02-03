@@ -5,35 +5,35 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `navigator_db` DEFAULT CHARACTER SET utf8mb4 ;
 USE `navigator_db` ;
 
+SET foreign_key_checks = 0;
+
 CREATE TABLE IF NOT EXISTS `navigator_db`.`nodes` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) DEFAULT '' NOT NULL,
-  PRIMARY KEY (`id`),
-  `vertices_id` INT,
-  FOREIGN KEY (`vertices_id`) REFERENCES Vertices(`id`)
-			ON DELETE SET NULL,
-  UNIQUE INDEX `vertices_id_UNIQUE` (`vertices_id` ASC) VISIBLE,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
 
 CREATE TABLE IF NOT EXISTS `navigator_db`.`vertices` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `source` INT NULL,
-  `destination` INT NULL,
-  `distance` DECIMAL(5,2) NULL,
+  `distance` DOUBLE NOT NULL,
+  `source` INT NOT NULL,
+  `destination` INT NOT NULL,
   PRIMARY KEY (`id`),
-  `node_id` INT,
-  FOREIGN KEY (`node_id`) REFERENCES Node(`id`)
-			ON DELETE SET NULL,
-  UNIQUE INDEX `node_id_UNIQUE` (`node_id` ASC) VISIBLE,
-  UNIQUE INDEX `destination_UNIQUE` (`destination` ASC) VISIBLE,
-  UNIQUE INDEX `source_UNIQUE` (`source` ASC) VISIBLE,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+  INDEX `fk_vertices_nodes1_idx` (`destination` ASC) VISIBLE,
+  INDEX `vertex_source_idx` (`source` ASC) VISIBLE,
+  CONSTRAINT `vertex_source`
+    FOREIGN KEY (`source`)
+    REFERENCES `mydb`.`nodes` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `vertex_destination`
+    FOREIGN KEY (`destination`)
+    REFERENCES `mydb`.`nodes` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO vertices (`source`, `destination`) VALUES (`node_id`,`node_id`);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

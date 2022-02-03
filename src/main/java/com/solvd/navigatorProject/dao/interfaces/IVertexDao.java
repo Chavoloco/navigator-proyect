@@ -7,7 +7,6 @@ public interface IVertexDao extends IEntityDao<Vertex>{
 
     double getDistanceById(long id);
 
-    void setDestination(Node node);
+    void setDestinationAndSource(long source, long destination, double distance);
 
-    void setSource(Node node);
 }

@@ -2,8 +2,11 @@ package com.solvd.navigatorProject;
 
 import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
+import com.solvd.navigatorProject.dao.interfaces.IVertexDao;
 import com.solvd.navigatorProject.services.myBatisImpl.NodeServiceImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.VertexServiceImpl;
+import com.solvd.navigatorProject.utils.MyBatisDAOFactory;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,18 +27,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        vertexService.save(new Vertex(1));
-        nodeService.save(new Node("A"));
-        nodeService.save(new Node("B"));
-
-        Node node1 = nodeService.getById(0);
-        Node node2 = nodeService.getById(1);
-        vertex = vertexService.getById(0);
-
-        Node connectednode = nodeService.connectNodes(node1, node2, vertex);
-
-        connectedNodes.add(connectednode);
-
+        try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
+            IVertexDao vertexDao = session.getMapper(IVertexDao.class);
+            vertexDao.setDestinationAndSource(1,2,25);
+            session.commit();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
 
     }
 

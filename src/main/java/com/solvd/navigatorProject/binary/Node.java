@@ -20,7 +20,7 @@ public class Node {
     public Node() {
     }
 
-    public long getId(long i) {
+    public long getId() {
         return id;
     }
 
@@ -53,7 +53,7 @@ public class Node {
         return "Node{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", vertices" + vertices +
+                ", vertices=" + vertices +
                 '}';
     }
 }

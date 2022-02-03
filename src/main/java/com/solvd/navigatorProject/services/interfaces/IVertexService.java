@@ -17,9 +17,7 @@ public interface IVertexService {
 
     double getDistanceById(long id);
 
-    void setDestination(Node node);
-
-    void setSource(Node node);
+    void setDestinationAndSource(long source, long destination, double distance);
 
     Vertex findFirst();
 

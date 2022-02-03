@@ -5,9 +5,8 @@ import java.util.List;
 public class Vertex {
     private long id;
     private double distance;
-    private int source;
-    private int destination;
-    private List<Node> nodes;
+    private long destination;
+    private long source;
 
     public Vertex() {
     }
@@ -16,9 +15,10 @@ public class Vertex {
         this.distance = distance;
     }
 
-    public Vertex(double distance, List<Node> nodes) {
+    public Vertex(long source, long destination, double distance) {
         this.distance = distance;
-        this.nodes = nodes;
+        this.source = source;
+        this.destination = destination;
     }
 
     public long getId() {
@@ -37,42 +37,28 @@ public class Vertex {
         this.distance = distance;
     }
 
-    public List<Node> getNodes() {
-        return nodes;
-    }
-
-    public void setNodes(List<Node> nodes) {
-        this.nodes = nodes;
-    }
-
-    public void addNode(Node nodes) {
-        this.nodes.add(nodes);
-    }
-
-    public int getSource() {
-        return source;
-    }
-
-    public void setSource(int source) {
-        this.source = source;
-    }
-
-    public int getDestination() {
+    public long getDestination() {
         return destination;
     }
 
-    public void setDestination(int destination) {
+    public void setDestination(long destination) {
         this.destination = destination;
     }
 
+    public long getSource() {
+        return source;
+    }
+
+    public void setSource(long source) {
+        this.source = source;
+    }
+
     @Override
-    public String toString() {
+    public String
+    toString() {
         return "Vertex{" +
                 "id=" + id +
                 ", distance=" + distance +
-                ", source=" + source +
-                ", destination=" + destination +
-                ", nodes=" + nodes +
                 '}';
     }
 }

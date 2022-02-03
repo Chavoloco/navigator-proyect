@@ -13,8 +13,6 @@ public interface INodeService {
 
     void delete(long id);
 
-    Node connectNodes(Node node1, Node node2, Vertex vertex);
-
     List<Node> getAll();
 
     Node findFirst();

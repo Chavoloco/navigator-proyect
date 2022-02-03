@@ -51,19 +51,6 @@ public class NodeServiceImpl implements INodeService {
     }
 
     @Override
-    public Node connectNodes(Node node1, Node node2, Vertex vertex) {
-        try {
-            VertexServiceImpl vertexService = new VertexServiceImpl();
-            vertexService.setSource(node1);
-            vertexService.setDestination(node2);
-            vertexService.save(vertex);
-        } catch (Exception e){
-            log.error(e.getMessage(), e);
-        }
-        return node1;
-    }
-
-    @Override
     public List<Node> getAll() {
         List<Node> nodeList = new ArrayList<>();
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
