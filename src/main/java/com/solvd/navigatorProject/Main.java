@@ -1,7 +1,5 @@
 package com.solvd.navigatorProject;
 
-import com.solvd.navigatorProject.binary.Node;
-import com.solvd.navigatorProject.binary.NodeHasVertices;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.services.myBatisImpl.NodeServiceImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.NodesHasVerticesServicesImpl;
@@ -9,10 +7,7 @@ import com.solvd.navigatorProject.services.myBatisImpl.VertexServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Locale;
 import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
 
 
 public class Main {
