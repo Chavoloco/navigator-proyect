@@ -75,8 +75,8 @@ public class Main {
             for (int j = 0; j < amountOfNodes; j++) {
                 finalMatrix[i][j] = finalMatrix[i][j];
                 for (int k = 0; k < finalMatrix.length; k++) {
-                    for ( i = 0; i < finalMatrix.length; i++) {
-                        for ( j = 0; j < finalMatrix.length; j++) {
+                    for (i = 0; i < finalMatrix.length; i++) {
+                        for (j = 0; j < finalMatrix.length; j++) {
                             if (finalMatrix[i][k] + finalMatrix[k][j] < finalMatrix[i][j])
                                 finalMatrix[i][j] = finalMatrix[i][k] + finalMatrix[k][j];
                             shortestDistance += finalMatrix[i][j];
