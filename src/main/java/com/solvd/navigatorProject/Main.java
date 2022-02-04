@@ -45,7 +45,6 @@ public class Main {
         initialMatrix = new long[0][];
         int i;
         int j;
-        int k;
 
         for (i = 0; i < amountOfNodes.length; i++) {
             for (j = 0; j < amountOfNodes.length; j++) {
