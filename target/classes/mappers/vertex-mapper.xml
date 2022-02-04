@@ -20,7 +20,7 @@
         ,
         <include refid="com.solvd.navigatorProject.dao.interfaces.INodeDao.body"></include>
         FROM nodes AS n
-        LEFT JOIN nodes_has_vertices AS nhv ON n.id = nhv.nodes_id
+        LEFT JOIN vertex_connect_nodes AS nhv ON n.id = nhv.nodes_id
         LEFT JOIN vertices AS v ON v.id = nhv.vertices_id;
     </select>
 
@@ -30,7 +30,7 @@
         ,
         <include refid="com.solvd.navigatorProject.dao.interfaces.INodeDao.body"></include>
         FROM nodes AS n
-        LEFT JOIN nodes_has_vertices AS nhv ON n.id = nhv.nodes_id
+        LEFT JOIN vertex_connect_nodes AS nhv ON n.id = nhv.nodes_id
         LEFT JOIN vertices AS v ON v.id = nhv.vertices_id
         WHERE v.id = #{id};
     </select>

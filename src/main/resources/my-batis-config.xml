@@ -18,7 +18,7 @@
     <mappers>
         <mapper resource="mappers/node-mapper.xml"/>
         <mapper resource="mappers/vertex-mapper.xml"/>
-        <mapper resource="mappers/vertex_connect_nodes.xml" />
+        <mapper resource="mappers/vertex-connect-nodes.xml" />
     </mappers>
 </configuration>
 
