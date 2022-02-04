@@ -1,11 +1,14 @@
 package com.solvd.navigatorProject;
 
 import com.solvd.navigatorProject.binary.Node;
+import com.solvd.navigatorProject.exceptions.NoNodesAdded;
+import com.solvd.navigatorProject.exceptions.NoShortestPath;
 import com.solvd.navigatorProject.services.myBatisImpl.NodeServiceImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.VertexConnectNodesServicesImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
@@ -29,13 +32,17 @@ public class Main {
 
     }
 
-    public static void askAmountOfNodes() {
+    public static void askAmountOfNodes() throws NoNodesAdded {
         Scanner scanner = new Scanner(System.in);
 
-        log.info("Add nodes writing their name. Type exit to stop.");
-        while (!scanner.nextLine().toUpperCase(Locale.ROOT).equals("EXIT")) {
-            String nodeName = scanner.nextLine();
-            nodeService.save(new Node(nodeName));
+        try {
+            log.info("Add nodes writing their name. Type exit to stop.");
+            while (!scanner.nextLine().toUpperCase(Locale.ROOT).equals("EXIT")) {
+                String nodeName = scanner.nextLine();
+                nodeService.save(new Node(nodeName));
+            }
+        } catch (InputMismatchException e) {
+            log.error("That wasn't what we asked.");
         }
     }
 
@@ -65,6 +72,13 @@ public class Main {
                                 finalMatrix[i][j] = finalMatrix[i][k] + finalMatrix[k][j];
                         }
                     }
+                }
+            }
+        }
+        for (int i = 0; i < finalMatrix.length; i++) {
+            for (int j = 0; j < finalMatrix.length; j++) {
+                if (initialMatrix == finalMatrix) {
+                    log.error(NoShortestPath::new);
                 }
             }
         }
