@@ -42,7 +42,6 @@ public class Main {
     public static void createInitialMatrix() {
 
         amountOfNodes = new Random().longs(0, nodeService.getAll().size()).distinct().limit(6).toArray();
-        initialMatrix = new long[0][];
         int i;
         int j;
 
@@ -58,7 +57,6 @@ public class Main {
 
         for (int i = 0; i < amountOfNodes.length; i++) {
             for (int j = 0; j < amountOfNodes.length; j++) {
-                finalMatrix = new long[0][];
                 finalMatrix[i][j] = initialMatrix[i][j];
                 for (int k = 0; k < finalMatrix.length; k++) {
                     for (i = 0; i < finalMatrix.length; i++) {
