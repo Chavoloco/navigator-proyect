@@ -49,11 +49,9 @@ public class Main {
     public static void createInitialMatrix() {
 
         amountOfVertices = new Random().longs(0, vertexService.getAll().size()).distinct().limit(6).toArray();
-        int i;
-        int j;
 
-        for (i = 0; i < amountOfVertices.length; i++) {
-            for (j = 0; j < amountOfVertices.length; j++) {
+        for (int i = 0; i < amountOfVertices.length; i++) {
+            for (int j = 0; j < amountOfVertices.length; j++) {
                 log.info(" " + '\t' +initialMatrix[i][j]);
             }
         }
