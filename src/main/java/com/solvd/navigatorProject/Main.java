@@ -2,7 +2,7 @@ package com.solvd.navigatorProject;
 
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.services.myBatisImpl.NodeServiceImpl;
-import com.solvd.navigatorProject.services.myBatisImpl.NodesHasVerticesServicesImpl;
+import com.solvd.navigatorProject.services.myBatisImpl.VertexConnectNodesServicesImpl;
 import com.solvd.navigatorProject.services.myBatisImpl.VertexServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +14,7 @@ public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
     private static VertexServiceImpl vertexService = new VertexServiceImpl();
     private static NodeServiceImpl nodeService = new NodeServiceImpl();
-    private static NodesHasVerticesServicesImpl nhs = new NodesHasVerticesServicesImpl();
+    private static VertexConnectNodesServicesImpl nhs = new VertexConnectNodesServicesImpl();
     private static final int numberOfVertices = 4;
     private static final int INF = 999999999;
     private static long[][] finalMatrix = new long[numberOfVertices][numberOfVertices];

@@ -1,13 +1,13 @@
 package com.solvd.navigatorProject.binary;
 
-public class NodeHasVertices {
+public class VertexConnectNodes {
     private long nodesId;
     private long verticesId;
 
-    public NodeHasVertices() {
+    public VertexConnectNodes() {
     }
 
-    public NodeHasVertices(long nodesId, long verticesId) {
+    public VertexConnectNodes(long nodesId, long verticesId) {
         this.nodesId = nodesId;
         this.verticesId = verticesId;
     }
@@ -30,7 +30,7 @@ public class NodeHasVertices {
 
     @Override
     public String toString() {
-        return "NodeHasVertices{" +
+        return "VertexConnectNodes{" +
                 "nodesId=" + nodesId +
                 ", verticesId=" + verticesId +
                 '}';

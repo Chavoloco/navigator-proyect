@@ -1,6 +1,5 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
-import com.solvd.navigatorProject.binary.Node;
 import com.solvd.navigatorProject.binary.Vertex;
 import com.solvd.navigatorProject.dao.interfaces.IVertexDao;
 import com.solvd.navigatorProject.services.interfaces.IVertexService;

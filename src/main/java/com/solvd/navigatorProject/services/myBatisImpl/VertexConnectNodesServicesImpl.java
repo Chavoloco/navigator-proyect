@@ -1,9 +1,9 @@
 package com.solvd.navigatorProject.services.myBatisImpl;
 
-import com.solvd.navigatorProject.binary.NodeHasVertices;
+import com.solvd.navigatorProject.binary.VertexConnectNodes;
 import com.solvd.navigatorProject.binary.Vertex;
-import com.solvd.navigatorProject.dao.interfaces.INodesHasVerticesDao;
-import com.solvd.navigatorProject.services.interfaces.NodesHasVerticesService;
+import com.solvd.navigatorProject.dao.interfaces.IVertexConnectNodesDao;
+import com.solvd.navigatorProject.services.interfaces.IVertexConnectNodes;
 import com.solvd.navigatorProject.utils.MyBatisDAOFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NodesHasVerticesServicesImpl implements NodesHasVerticesService {
+public class VertexConnectNodesServicesImpl implements IVertexConnectNodes {
     private static final Logger log = LogManager.getLogger(NodeServiceImpl.class);
 
     @Override
-    public void joinNodes(NodeHasVertices nhs) {
+    public void joinNodes(VertexConnectNodes nhs) {
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
-            INodesHasVerticesDao nodesHasVerticesDao = session.getMapper(INodesHasVerticesDao.class);
-            nodesHasVerticesDao.joinNodes( nhs);
+            IVertexConnectNodesDao vertexConnectNodesDao = session.getMapper(IVertexConnectNodesDao.class);
+            vertexConnectNodesDao.joinNodes( nhs);
             session.commit();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -31,8 +31,8 @@ public class NodesHasVerticesServicesImpl implements NodesHasVerticesService {
     public List<Vertex> getVerticesByNodeId(long id) {
         List<Vertex> vertices = new ArrayList<>();
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
-            INodesHasVerticesDao nodesHasVerticesDao = session.getMapper(INodesHasVerticesDao.class);
-            vertices = nodesHasVerticesDao.getVerticesByNodeId(id);
+            IVertexConnectNodesDao vertexConnectNodesDao = session.getMapper(IVertexConnectNodesDao.class);
+            vertices = vertexConnectNodesDao.getVerticesByNodeId(id);
             session.commit();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -43,8 +43,8 @@ public class NodesHasVerticesServicesImpl implements NodesHasVerticesService {
     @Override
     public void deleteAllJoinedNodes() {
         try (SqlSession session = MyBatisDAOFactory.getSessionFactory().openSession()) {
-            INodesHasVerticesDao nodesHasVerticesDao = session.getMapper(INodesHasVerticesDao.class);
-            nodesHasVerticesDao.deleteAllJoinedNodes();
+            IVertexConnectNodesDao vertexConnectNodesDao = session.getMapper(IVertexConnectNodesDao.class);
+            vertexConnectNodesDao.deleteAllJoinedNodes();
             session.commit();
         } catch (Exception e) {
             log.error(e.getMessage(), e);

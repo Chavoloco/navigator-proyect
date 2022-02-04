@@ -1,12 +1,12 @@
 package com.solvd.navigatorProject.dao.interfaces;
 
-import com.solvd.navigatorProject.binary.NodeHasVertices;
+import com.solvd.navigatorProject.binary.VertexConnectNodes;
 import com.solvd.navigatorProject.binary.Vertex;
 
 import java.util.List;
 
-public interface INodesHasVerticesDao {
-    void joinNodes(NodeHasVertices nhs);
+public interface IVertexConnectNodesDao {
+    void joinNodes(VertexConnectNodes nhs);
 
     List<Vertex> getVerticesByNodeId(long id);
 

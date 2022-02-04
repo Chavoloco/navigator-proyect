@@ -15,7 +15,7 @@
         ,
         <include refid="com.solvd.navigatorProject.dao.interfaces.IVertexDao.body"></include>
         FROM vertices AS v
-        LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
+        LEFT JOIN vertex_connect_nodes AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
     </select>
 
@@ -25,7 +25,7 @@
         ,
         <include refid="com.solvd.navigatorProject.dao.interfaces.IVertexDao.body"></include>
         FROM vertices AS v
-        LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
+        LEFT JOIN vertex_connect_nodes AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
         WHERE nodes_id = #{nodeId};
 

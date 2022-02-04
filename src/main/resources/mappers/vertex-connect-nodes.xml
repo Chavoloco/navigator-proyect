@@ -2,9 +2,9 @@
 
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.solvd.navigatorProject.dao.interfaces.INodesHasVerticesDao">
-    <insert id="joinNodes" parameterType="com.solvd.navigatorProject.binary.NodeHasVertices">
-        INSERT INTO nodes_has_vertices (nodes_id, vertices_id)
+<mapper namespace="com.solvd.navigatorProject.dao.interfaces.IVertexConnectNodesDao">
+    <insert id="joinNodes" parameterType="com.solvd.navigatorProject.binary.VertexConnectNodes">
+        INSERT INTO vertex_connect_nodes (nodes_id, vertices_id)
         VALUES ( #{nodesId}, #{verticesId});
     </insert>
 
@@ -12,12 +12,12 @@
         SELECT
         <include refid="com.solvd.navigatorProject.dao.interfaces.IVertexDao.body"></include>
         FROM vertices v
-        LEFT JOIN nodes_has_vertices AS nhv ON v.id = nhv.vertices_id
+        LEFT JOIN vertex_connect_nodes AS nhv ON v.id = nhv.vertices_id
         LEFT JOIN nodes AS n ON n.id = nhv.nodes_id
         WHERE n.id = #{nodeId};
     </select>
     <delete id="deleteAllJoinedNodes" >
-        DELETE FROM nodes_has_vertices
+        DELETE FROM vertex_connect_nodes
         WHERE nodes_id > 0 AND vertices_id > 0;
     </delete>
 </mapper>

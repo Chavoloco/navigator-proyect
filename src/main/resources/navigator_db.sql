@@ -20,18 +20,18 @@ CREATE TABLE IF NOT EXISTS `navigator_db`.`vertices` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `navigator_db`.`nodes_has_vertices` (
+CREATE TABLE IF NOT EXISTS `navigator_db`.`vertex_connect_nodes` (
   `nodes_id` INT NOT NULL,
   `vertices_id` INT NOT NULL,
   PRIMARY KEY (`nodes_id`, `vertices_id`),
-  INDEX `fk_nodes_has_vertices_vertices1_idx` (`vertices_id` ASC) VISIBLE,
-  INDEX `fk_nodes_has_vertices_nodes1_idx` (`nodes_id` ASC) VISIBLE,
-  CONSTRAINT `fk_nodes_has_vertices_nodes1`
+  INDEX `fk_vertex_connect_nodes_vertices1_idx` (`vertices_id` ASC) VISIBLE,
+  INDEX `fk_vertex_connect_nodes_nodes1_idx` (`nodes_id` ASC) VISIBLE,
+  CONSTRAINT `fk_vertex_connect_nodes_nodes1`
     FOREIGN KEY (`nodes_id`)
     REFERENCES `navigator_db`.`nodes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_nodes_has_vertices_vertices1`
+  CONSTRAINT `fk_vertex_connect_nodes_vertices1`
     FOREIGN KEY (`vertices_id`)
     REFERENCES `navigator_db`.`vertices` (`id`)
     ON DELETE CASCADE
