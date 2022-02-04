@@ -54,10 +54,10 @@ public class Main {
 
         for (i = 0; i < amountOfVertices.length; i++) {
             for (j = 0; j < amountOfVertices.length; j++) {
-                System.out.print(initialMatrix[i][j] + " ");
+                log.info(" " + '\t' +initialMatrix[i][j]);
             }
         }
-        System.out.println();
+        log.info('\n');
     }
 
     public static void findShortestPath() {
@@ -89,13 +89,12 @@ public class Main {
         for (int i = 0; i < vertexService.getDistanceById(i); ++i) {
             for (int j = 0; j < vertexService.getDistanceById(j); ++j) {
                 if (finalMatrix[i][j] == INF) {
-                    System.out.print("INF ");
+                    log.info(" " + '\t' + "INF ");
                 } else {
-                    System.out.print(finalMatrix[i][j] + "   ");
+                    log.info(" " + '\t' + finalMatrix[i][j]);
                 }
-                System.out.println();
+                log.info('\n');
             }
-            System.out.println();
         }
     }
 
